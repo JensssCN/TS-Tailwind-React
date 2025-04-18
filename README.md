@@ -1,6 +1,6 @@
 # Hänga gubbe
 
-Spelet hänga gubbe skrivet i TypeScipt, React + Vite med TailwindCss
+Spelet hänga gubbe skrivet i TypeScipt, React + Vite med TailwindCss.
 "npm run dev" för att starta projektet.
 
 Ordlista taget ifrån ordbok lagom 
