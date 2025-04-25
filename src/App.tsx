@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import words from "./wordList.json";
 // import HangmanDraw from "./component/HangmanDraw";
-// import HangmanWord from "./component/HangmanWord";
-// import Keyboard from "./component/Keyboard";
+import HangmanWord from "./components/HangmanWord";
+import Keyboard from "./components/Keyboard";
+import "./App.css";
 
 function App() {
   const [guessLetters, setGuessLetters] = useState<string[]>([]);
@@ -60,11 +61,7 @@ function App() {
           }`}
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <span>
-              {isWinner
-                ? "🎉 Grattis, du vann!"
-                : "💀 Du förlorade. Försök igen!"}
-            </span>
+            <span>{isWinner ? "Grattis, du vann!" : "Du förlorade."}</span>
             <button
               className="bg-white text-black font-semibold px-4 py-1 rounded hover:bg-gray-200 transition"
               onClick={resetGame}
@@ -76,13 +73,12 @@ function App() {
       )}
 
       <div className="font-adlam max-w-3xl flex items-center flex-col gap-8 mx-auto pt-12">
-        <HangmanDraw numberOfGuess={incorrectLetters.length} />
         <HangmanWord
           result={isLoser}
           guessLetters={guessLetters}
           wordToGuess={wordToGuess}
         />
-        <div className="self-stretch">
+        <div className="self-stretch ">
           <Keyboard
             disabled={isWinner || isLoser}
             activeLetter={guessLetters.filter((letter) =>

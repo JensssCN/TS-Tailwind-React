@@ -1,3 +1,9 @@
+type HangmanWordProps = {
+  guessLetters: string[];
+  wordToGuess: string;
+  result?: boolean;
+};
+
 const HangmanWord = () => {
   return (
     <div>
