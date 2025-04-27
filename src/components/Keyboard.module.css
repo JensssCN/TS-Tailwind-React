@@ -1,39 +1,29 @@
 .btn {
-  width: 5rem;
+  width: 4rem;
+  height: 4rem;
   border: 3px solid black;
-  border-radius: 17px;
+  border-radius: 12px;
   background: transparent;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
-  padding: 0.5rem;
+  padding: 0.3rem;
   font-weight: bold;
   cursor: pointer;
   color: black;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .btn.active {
-  background-color: #6366f1;
-  color: white;
+  background-color: #18cc51;
 }
 
 .btn.inactive {
-  opacity: 0.3;
+  color: #cf0e15;
+  border: 3px solid #cf0e15;
 }
 
 .btn:hover:not(:disabled),
 .btn:focus:not(:disabled) {
-  background-color: #818cf8;
-}
-
-@media only screen and (max-width: 480px) {
-  .btn {
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.3rem;
-    border: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 5px;
-  }
+  background-color: #d1d5db;
+  transform: scale(1.05);
 }

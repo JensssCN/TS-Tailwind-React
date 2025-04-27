@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import words from "./wordList.json";
-// import HangmanDraw from "./component/HangmanDraw";
+import DrawHangman from "./components/DrawHangman";
 import HangmanWord from "./components/HangmanWord";
 import Keyboard from "./components/Keyboard";
 import "./App.css";
@@ -53,10 +53,10 @@ function App() {
   }, [guessLetters, addGuessLetter]);
 
   return (
-    <div className="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-100 via-indigo-100 to-purple-200 h-screen">
+    <div className="h-screen">
       {(isWinner || isLoser) && (
         <div
-          className={`fixed top-0 left-0 w-full text-white text-center py-4 z-50 ${
+          className={`absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-24 text-white text-center py-8 z-50 rounded-lg ${
             isWinner ? "bg-green-600" : "bg-red-600"
           }`}
         >
@@ -72,21 +72,33 @@ function App() {
         </div>
       )}
 
-      <div className="font-adlam max-w-3xl flex items-center flex-col gap-8 mx-auto pt-12">
-        <HangmanWord
-          result={isLoser}
-          guessLetters={guessLetters}
-          wordToGuess={wordToGuess}
-        />
-        <div className="self-stretch ">
-          <Keyboard
-            disabled={isWinner || isLoser}
-            activeLetter={guessLetters.filter((letter) =>
-              wordToGuess.includes(letter)
-            )}
-            inactiveLetter={incorrectLetters}
-            addGuessLetter={addGuessLetter}
-          />
+      <div className="font-adlam w-full max-w-7xl flex flex-col items-center mx-auto pt-12 px-8">
+        <h1 className="text-4xl font-bold mb-8 text-center">
+          Hänga Gubbe gjort med Tailwind
+        </h1>
+
+        <div className="flex items-start gap-32 w-full mt-20">
+          <div>
+            <DrawHangman numberOfGuess={incorrectLetters.length} />
+          </div>
+
+          <div className="flex flex-col items-center gap-12 flex-1 mt-20">
+            <HangmanWord
+              result={isLoser}
+              guessLetters={guessLetters}
+              wordToGuess={wordToGuess}
+            />
+            <div className="self-stretch bg-gray-200 p-4 rounded-lg">
+              <Keyboard
+                disabled={isWinner || isLoser}
+                activeLetter={guessLetters.filter((letter) =>
+                  wordToGuess.includes(letter)
+                )}
+                inactiveLetter={incorrectLetters}
+                addGuessLetter={addGuessLetter}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

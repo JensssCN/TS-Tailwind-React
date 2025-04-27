@@ -10,9 +10,12 @@ const HangmanWord = ({
   result = false,
 }: HangmanWordProps) => {
   return (
-    <div className="flex gap-2 text-3xl lg:text-6xl font-bold uppercase">
+    <div className="flex gap-2 text-3xl lg:text-5xl font-bold uppercase">
       {wordToGuess.split("").map((letter, index) => (
-        <span className="border-b-7 border-black rounded-md" key={index}>
+        <span
+          className="border-b-7 border-black rounded-md inline-block w-10 text-center"
+          key={index}
+        >
           <span
             style={{
               visibility:
